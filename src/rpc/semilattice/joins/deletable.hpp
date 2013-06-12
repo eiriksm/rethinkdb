@@ -30,9 +30,9 @@ public:
         return res;
     }
 
-    /* Usage: [get_copy] returns a copy of the object, [get] is for efficiency, and
+    /* Usage: [get_copy] returns a copy of the object, [get_ref] is for efficiency, and
        [get_mutable] is for when you need to modify something. */
-    const T &get() const {
+    const T &get_ref() const {
         guarantee(t);
         return *t;
     }

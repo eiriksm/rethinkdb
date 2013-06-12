@@ -74,7 +74,7 @@ std::map<namespace_id_t, persistable_blueprint_t<protocol_t> > suggest_blueprint
                                                                                                  it != ns_goals.namespaces.end();
                                                                                                  ++it) {
         if (!it->second.is_deleted()) {
-            if (it->second.get().blueprint.in_conflict() || !(it->second.get().blueprint.get() == persistable_blueprint_t<protocol_t>())) {
+            if (it->second.get_ref().blueprint.in_conflict() || !(it->second.get_ref().blueprint.get() == persistable_blueprint_t<protocol_t>())) {
                 order.push_front(it->first);
             } else {
                 order.push_back(it->first);
@@ -104,7 +104,7 @@ std::map<namespace_id_t, persistable_blueprint_t<protocol_t> > suggest_blueprint
             out.insert(
                 std::make_pair(*it,
                     suggest_blueprint_for_namespace<protocol_t>(
-                        ns_goals.namespaces.find(*it)->second.get(),
+                        ns_goals.namespaces.find(*it)->second.get_copy(),
                         reactor_directory,
                         machine_id_translation_table,
                         machine_data_centers,
@@ -151,8 +151,8 @@ void fill_in_blueprints(cluster_semilattice_metadata_t *cluster_metadata,
             it != cluster_metadata->machines.machines.end();
             it++) {
         if (!it->second.is_deleted()) {
-            if (!it->second.get().datacenter.in_conflict()) {
-                machine_assignments[it->first] = it->second.get().datacenter.get();
+            if (!it->second.get_ref().datacenter.in_conflict()) {
+                machine_assignments[it->first] = it->second.get_ref().datacenter.get();
             } else {
                 machine_assignments[it->first] = nil_uuid();
             }
