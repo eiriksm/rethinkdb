@@ -76,7 +76,7 @@ Usage: import_export.rb [options]
 2013-03-14T20:49:59-07:00 Exporting table test2.abc...
 2013-03-14T20:49:59-07:00 Done!
 ~/rethinkdb_migration $ <SHUT DOWN RETHINKDB>
-~/rethinkdb_migration $ <MOVE/DELETE RETHINKDB_DATA DIRECTORY>
+~/rethinkdb_migration $ <MOVE/DELETE RETHINKDB_DATA AND DATA DIRECTORY IN INSTANCE DIRECTORY>
 ~/rethinkdb_migration $ <UPGRADE RETHINKDB>
 ~/rethinkdb_migration $ <RESTART RETHINKDB>
 ~/rethinkdb_migration $ ruby import_export.rb --import
